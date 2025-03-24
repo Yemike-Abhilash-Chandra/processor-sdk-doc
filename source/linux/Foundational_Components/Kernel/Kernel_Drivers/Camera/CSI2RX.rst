@@ -211,6 +211,24 @@ I2C2 and CSI-RX Port 0:
        status = "okay";
    };
 
+*************************************
+Monitoring errors during streaming
+*************************************
+
+To check for errors during streaming, first get the media pipeline using:
+
+.. code-block:: console
+
+   media-ctl -p
+
+This will list all subdevices in the media pipeline. Now locate the subdevice for the Cadence CSI2RX and run the following command to check for any errors during streaming such as short packets or ECC errors:
+
+.. code-block:: console
+
+   v4l2-ctl --log-status -d /dev/v4l-subdevX
+
+Replace /dev/v4l-subdevX with the correct subdevice node of the Cadence CSI2RX receiver.
+
 .. _enabling-camera-sensors:
 
 ***********************
